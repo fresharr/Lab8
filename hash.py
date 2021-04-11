@@ -70,7 +70,6 @@ def compareHash():
     totalMods = []
     totalNewFiles = []
     totalMissingFiles = []
-    # print(oldHashlist)
 
     for root, dirs, files in os.walk("/", topdown=True):
 
@@ -110,9 +109,6 @@ def compareHash():
     end1 = len(oldHashlist)
     end2 = len(newList)
 
-    # print(oldHashlist)
-    # print(newList)
-
     #set end parameter
     if end1 > end2:
         end = end1
@@ -136,9 +132,7 @@ def compareHash():
                 newhash = newList[name+1]
 
                 if oldHashlist[index+1] != newhash: #hash different
-                    # print("old: " + str(oldHashlist))
                     oldHashlist[index+1] = newhash #set new hash
-                    # print("new: " + str(oldHashlist))
                     totalMods.append(oldHashlist[index] + ": " + oldHashlist[index+1])
 
             if oldHashlist[index] not in newList:
@@ -150,9 +144,6 @@ def compareHash():
                     totalNewFiles.append(newList[index]) #new file detected
 
             index += 2
-
-    # print(oldHashlist)
-    # print(newList)
 
     #print updates
     print("\n********UPDATES***********\n")
@@ -194,21 +185,3 @@ def compareHash():
     f.close()
 
 main()
-#
-#         #check changes in saved file
-#         if search_array(hash in x for x in oldHashlist)==False:
-#             filechanges.append(str(os.path.join(root,name)))
-#
-#         hlist= hash not in oldHashlist
-#         flist=hash not in filechanges
-#         if flist==True:
-#             if hlist==True:
-#                 print(str("New hash detected: " + hash))
-#
-# #print output of file chages
-# if filechanges == []:
-#     print("There were no file changes")
-# else:
-#     print("These were modified files"+ '\n' + str(filechanges))
-#
-# outputFile.close()
